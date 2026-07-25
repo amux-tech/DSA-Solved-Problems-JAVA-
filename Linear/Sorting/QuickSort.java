@@ -18,26 +18,26 @@ public class QuickSort {
 
 	public static int Partition(int[] arr, int left, int right) {
 		int pivot = arr[right];
-		int i = (left - 1); // Index of smaller element
+		int i = left; // Index of smaller element
 
 		for (int j = left; j < right; j++) {
 			// If current element is smaller than or equal to pivot
-			if (arr[j] >= pivot) {
-				i++;
+			if (arr[j] <= pivot) {
 
 				// Swap arr[i] and arr[j]
 				int temp = arr[i];
 				arr[i] = arr[j];
 				arr[j] = temp;
+				i++;
 			}
 		}
 
-		// Swap the pivot element with the element at i + 1
-		int temp = arr[i + 1];
-		arr[i + 1] = arr[right];
+		// Swap the pivot element with the element at i
+		int temp = arr[i];
+		arr[i] = arr[right];
 		arr[right] = temp;
 
-		return i + 1; // Return the partitioning index
+		return i; // Return the partitioning index
 	}
 
 	public static void QuickSort(int[] arr, int left, int right) {
